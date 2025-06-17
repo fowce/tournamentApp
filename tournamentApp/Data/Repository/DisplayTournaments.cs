@@ -142,44 +142,6 @@ namespace tournamentApp.Data.Repository
 			return tournaments;
 		}
 
-		//public List<Tournament> GetTournamentsUserParticipates(int userId)
-		//{
-		//	UpdateTournamentStatuses();
-
-		//	var tournaments = new List<Tournament>();
-
-		//	using (SqlConnection connection = new SqlConnection(_connectionString))
-		//	{
-		//		string query = "SELECT [Name], [Format], CreatorId, Id, MaxNumberPlayers " +
-		//					   "FROM Tournaments t " +
-		//					   "JOIN TournamentParticipants tp ON t.Id = tp.TournamentId " +
-		//					   "WHERE tp.UserId = @creatorId";
-
-		//		using (SqlCommand command = new SqlCommand(query, connection))
-		//		{
-		//			command.Parameters.AddWithValue("@creatorId", userId);
-		//			connection.Open();
-		//			using (SqlDataReader reader = command.ExecuteReader())
-		//			{
-		//				while (reader.Read())
-		//				{
-		//					tournaments.Add(new Tournament
-		//					{
-		//						Name = reader.GetString(0),
-		//						Format = reader.GetString(1),
-		//						Id = reader.GetInt32(3),
-		//						CreatorName = GetUserName(reader.GetInt32(2)),
-		//						CurrentPlayers = GetCurrentNumPlayers(reader.GetInt32(3)),
-		//						MaxPlayers = reader.GetInt32(4)
-		//					});
-		//				}
-		//			}
-		//		}
-		//	}
-
-		//	return tournaments;
-		//}
-
 		public string? GetUserName(int userId)
 		{
 			string query = "SELECT [Name] " +
