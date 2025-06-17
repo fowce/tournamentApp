@@ -1,0 +1,22 @@
+﻿@{
+	ViewData["Title"] = "Profile";
+}
+@using Microsoft.AspNetCore.Http
+@model tournamentApp.Models.Entities.ProfileUser
+
+<div class="pf-container">
+	<div class="pf-player">
+		<h3 class="pf-name-player">@Model.Name</h3>
+	</div>
+
+	<div class="pf-item-container">
+		<div class="pf-email">Email: @Model.Email</div>
+		<div class="pf-rating">Рейтинг: <span class="pf-color-rt">@Model.Rating</span></div>
+		@if (Context.Session.GetString("UserRole") == "admin")
+		{
+			<div class="pf-links-container">
+				<a class="pf-my-tournaments" asp-controller="Home" asp-action="DisplayUsers">Список пользователей</a>
+			</div>
+		}
+	</div>
+</div>

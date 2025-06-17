@@ -1,0 +1,59 @@
+﻿.lt-wrapper {
+    padding-inline: 40px;
+    margin-bottom: 10px;
+}
+
+.lt-link-block {
+    text-decoration: none;
+    border-radius: 8px;
+    display: block;
+    background-color: #05BEB5;
+    color: #1B2026;
+    transition: 0.3s ease;
+    font-size: 16px;
+    max-width: 1240px;
+}
+
+.lt-link-block:hover {
+    background-color: #12a59e;
+    color: #1B2026;
+    font-size: 16px;
+}
+
+.lt-container {
+    position: relative;
+    display: flex;
+    gap: 250px;
+    padding-bottom: 10px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.lt-name-cup {
+    padding: 10px 0px;
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 30px;
+    color: #1B2026;
+}
+
+.lt-creator {
+    margin-left: 30px;
+}
+
+.lt-format {
+    position: absolute;
+    left: 680px;
+}
+
+.lt-game {
+    position: absolute;
+    left: 430px;
+}
+
+.lt-players {
+    position: absolute;
+    left: 930px;
+}

@@ -1,0 +1,92 @@
+﻿@{
+}
+@using tournamentApp.Models.Entities
+@model TournamentTeamsViewModel
+
+@{
+    int total = Model.MaxPlayers;
+    int perSide = total / 2;
+    var leftPlayers = Model.Participants.Where(p => p.Side == "L").ToList();
+    var rightPlayers = Model.Participants.Where(p => p.Side == "R").ToList();
+    string status = Model.Status;
+}
+
+<div class="teams-container">
+    <div class="teams-box">
+        <div class="back-link-wrapper">
+            <a href="@Url.Action("ListTournaments", "Home")" class="btn back-link">Назад</a>
+            <a href="@Url.Action("Matches", "Home", new {tournamentId = Model.TournamentId})" class="btn back-link match">Матч</a>
+            <div class="text-center leave-tournament">
+                <form method="post" asp-action="LeaveTournament" asp-controller="Home">
+                    <input type="hidden" name="id" value="@Model.TournamentId" />
+                    <button type="submit" class="btn btn-light t-btn-in">Покинуть турнир</button>
+                </form>
+            </div>
+            @if (status == "Активный")
+            {
+                <div class="color-status">
+                    Статус:<span class="status-active">@status</span>
+                </div>
+            }
+            else if (status == "Предстоящий")
+            {
+                <div class="color-status">
+                    Статус:<span class="status-upcoming">@status</span>
+                </div>
+            }
+            else
+            {
+                <div class="color-status">
+                    Статус:<span class="status-completed">@status</span>
+                </div> 
+            }
+        </div>
+
+        @if (TempData["JoinError"] != null)
+        {
+            <div class="t-alert-warning">@TempData["JoinError"]</div>
+        }
+        @if (TempData["LeaveSuccess"] != null)
+        {
+            <div class="t-alert-success">@TempData["LeaveSuccess"]</div>
+        }
+
+        @if (TempData["LeaveError"] != null)
+        {
+            <div class="t-alert-warning">@TempData["LeaveError"]</div>
+        }
+        <div class="d-flex justify-content-between">
+            <!-- Left Side -->
+            <div class="side-column">
+                <h5 class="text-white mb-3">Сторона L</h5>
+                @for (int i = 0; i < perSide; i++)
+                {
+                    <div class="player-block">
+                        @(i < leftPlayers.Count ? leftPlayers[i].UserName : "")
+                    </div>
+                }
+                <form method="post" asp-action="JoinSide" asp-controller="Home">
+                    <input type="hidden" name="id" value="@Model.TournamentId" />
+                    <input type="hidden" name="side" value="L" />
+                    <button type="submit" class="btn btn-light t-btn-in">Войти</button>
+                </form>
+            </div>
+
+            <!-- Right Side -->
+            <div class="side-column">
+                <h5 class="text-white mb-3">Сторона R</h5>
+                @for (int i = 0; i < perSide; i++)
+                {
+                    <div class="player-block">
+                        @(i < rightPlayers.Count ? rightPlayers[i].UserName : "")
+                    </div>
+                }
+                <form method="post" asp-action="JoinSide" asp-controller="Home">
+                    <input type="hidden" name="id" value="@Model.TournamentId" />
+                    <input type="hidden" name="side" value="R" />
+                    <button type="submit" class="btn btn-light t-btn-in">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

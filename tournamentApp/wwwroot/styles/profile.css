@@ -1,0 +1,65 @@
+﻿.pf-container {
+    display: flex;
+    gap: 80px;
+    max-width: 1296px;
+    padding: 0px 20px;
+}
+
+.pf-player {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #05BEB5;
+    border-radius: 15px;
+    max-width: auto;
+    padding: 50px 35px 35px 35px;
+    background-color: #05BEB5;
+}
+
+.pf-name-player {
+    color: #1B2026;
+    padding-bottom: 12px;
+}
+
+.pf-item-container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.pf-rating {
+    color: #e0e0e0;
+}
+
+.pf-color-rt {
+    color: #62c36a;
+    padding-left: 5px;
+}
+
+.pf-email {
+    color: #e0e0e0;
+}
+
+.pf-links-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.pf-my-tournaments, .pf-participation {
+    padding: 10px 25px;
+    background: #e0e0e0;
+    color: #1B2026;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.pf-my-tournaments:hover, .pf-participation:hover {
+    background: #9f9f9f;
+    color: #1B2026;
+}

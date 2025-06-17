@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Http
+@using tournamentApp.Models.Entities
+@model MatchViewModel
+@{
+	var role = Context.Session.GetString("UserRole");
+}
+
+<div class="container mt-4 px-4 text-white">
+    <ul class="nav nav-tabs border-bottom mb-4">
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-action="ListTournaments">К турнирам</a>
+        </li>
+        <li class="nav-item">
+			<a class="nav-link text-white" href="@Url.Action("Teams", "Home", new {id = Model.TournamentId})">Участники</a>
+        </li>
+    </ul>
+</div>
+<div class="matches-container">
+    <h3 class="matches-title-score">Счет</h3>
+    <div class="matches-wrapper-items">
+		<div class="matches-wrapper-sides">
+			<div class="matches-sideL">Сторона L</div>
+			<div class="matches-score">
+				@if (Model.ScoreLeftSide > Model.ScoreRightSide)
+				{
+					<span class="matches-score-sideL matches-color-winner">@Model.ScoreLeftSide</span>
+				}
+				else
+				{
+					<span class="matches-score-sideL matches-color">@Model.ScoreLeftSide</span>
+				}
+				<span class="matches-colon matches-color">:</span>
+				@if (Model.ScoreLeftSide < Model.ScoreRightSide)
+				{
+					<span class="matches-score-sideR matches-color-winner">@Model.ScoreRightSide</span>
+				}
+				else
+				{
+					<span class="matches-score-sideR matches-color">@Model.ScoreRightSide</span>
+				}
+			</div>
+			<div class="matches-sideR">Сторона R</div>
+		</div>
+		@if (role == "admin")
+		{
+			<div class="matches-add-results">Добавить результаты</div>
+			<form method="post" asp-action="UpdateMatch">
+				<input type="hidden" asp-for="TournamentId" />
+				@if (TempData["UpdateError"] != null)
+				{
+					<div class="t-alert-warning">@TempData["UpdateError"]</div>
+				}
+				<div class="matches-results-sideL">
+					Счет стороны L
+					<input type="number" name="ScoreLeftSide" min="0" max="10" value="0" class="matches-score-input" asp-for="ScoreLeftSide" />
+					<span asp-validation-for="ScoreLeftSide"></span>
+				</div>
+				<div class="matches-results-sideR">
+					Счет стороны R
+					<input type="number" name="ScoreRightSide" min="0" max="10" value="0" class="matches-score-input" asp-for="ScoreRightSide" />
+					<span asp-validation-for="ScoreRightSide"></span>
+				</div>
+				<button type="submit" class="matches-btn-save">Сохранить результат</button>
+			</form>
+		}
+    </div>
+</div>

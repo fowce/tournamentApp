@@ -1,0 +1,23 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="clickable-cards-container">
+	<a asp-area="" asp-controller="Home" asp-action="Index" class="clickable-card">
+		<img src="~/photos/main_page_formats.png" alt="Формат турниров">
+		<div class="card-text">Формат турниров</div>
+	</a>
+	<a asp-area="" asp-controller="Home" asp-action="ListTournaments" class="clickable-card">
+		<img src="~/photos/main_page_tournament.png" alt="Текущие турниры">
+		<div class="card-text">Текущие турниры</div>
+	</a>
+	<a asp-area="" asp-controller="Home" asp-action="CreateTournament" class="clickable-card">
+		<img src="~/photos/main_page_createTournament.png" alt="Создать турнир">
+		<div class="card-text">Создать турнир</div>
+	</a>
+	<a asp-area="" asp-controller="Home" asp-action="PlayersRating" class="clickable-card">
+		<img src="~/photos/main_page_team.png" alt="Просмотр команд">
+		<div class="card-text">Рейтинг игроков</div>
+	</a>
+</div>
+

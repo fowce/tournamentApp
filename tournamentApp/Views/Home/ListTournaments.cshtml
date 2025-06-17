@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "List";
+}
+@model IEnumerable<tournamentApp.Models.Entities.Tournament>
+
+<div class ="container mt-4 px-4 text-white">
+    <ul class="nav nav-tabs border-bottom mb-4">
+        <li class="nav-item">
+			<a class="nav-link text-white" asp-action="ListTournaments">Обзор</a>
+        </li>
+        <li class="nav-item">
+			<a class="nav-link text-white" asp-action="MyTournaments">Мои турниры</a>
+        </li>
+    </ul>
+    <form method="get" asp-action="@ViewContext.RouteData.Values["action"]" class="mb-4">
+        <div class="row">
+            <div class="col-md-3">
+                <select name="GameName" class="form-control" onchange="this.form.submit()">
+                    <option value="">Все игры</option>
+                    @foreach (var game in ViewBag.AvailableGames)
+                    {
+                        <option value="@game" selected="@(Context.Request.Query["GameName"] == game)">@game</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="Format" class="form-control" onchange="this.form.submit()">
+                    <option value="">Все форматы</option>
+                    @foreach (var format in ViewBag.AvailableFormats)
+                    {
+                        <option value="@format" selected="@(Context.Request.Query["Format"] == format)">@format</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="text" name="SearchName" class="form-control"
+                       placeholder="Поиск по названию" value="@Context.Request.Query["SearchName"]" />
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-warning w-100">Фильтровать</button>
+            </div>
+        </div>
+    </form>
+</div>
+@foreach (var tournament in Model)
+{
+	<div class="lt-wrapper">
+		<a class="lt-link-block" href="@Url.Action("Teams", "Home", new { id = tournament.Id })">
+			<div class="lt-name-cup">@tournament.Name</div>
+			<div class="lt-container">
+				<div class="lt-creator">турнир созданный: @tournament.CreatorName</div>
+				<div class="lt-format">формат: @tournament.Format</div>
+                <div class="lt-game">игра: @tournament.GameName</div>
+				<div class="lt-players">игроки: @tournament.CurrentPlayers / @tournament.MaxPlayers</div>
+			</div>
+		</a>
+	</div>
+}

@@ -1,0 +1,93 @@
+﻿.dropdown-item {
+    color: black !important;
+}
+
+.container-grid {
+    display: grid;
+    grid-template-columns: 20% 60%;
+    justify-content: space-between;
+}
+
+.grid-item {
+    border: 2px solid white;
+}
+
+.fixed-height-sidebar-rating {
+    height: 100%;
+    min-height: 400px;
+}
+
+.fixed-height-sidebar-anons {
+
+    min-height: 250px;
+}
+
+.br {
+    border-radius: 13px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #5A626A;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+.index-main {
+    transition: 0.3s ease;
+    border-radius: 13px;
+}
+
+.index-main:hover {
+    background-color: #5A626A;
+    border-radius: 13px;
+}
+
+.bg-dropdown {
+    background-color: #5A626A;
+}
+
+.logo:hover {
+    background-color: #a1aab2;
+}
+
+.clickable-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    gap: 20px; 
+}
+
+.clickable-card {
+    text-decoration: none;  
+    color: inherit;         
+    display: flex;          
+    flex-direction: column; 
+    cursor: pointer;        
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    border-radius: 13px;
+}
+
+.clickable-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.clickable-card .card-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    font-weight: 400;
+    text-align: center;
+}

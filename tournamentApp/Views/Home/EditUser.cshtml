@@ -1,0 +1,30 @@
+﻿@{
+}
+@using tournamentApp.Models.Entities
+@model EditUser
+
+<div class="ct-container">
+	<h2 class="ct-page-title">Редактирование пользователя</h2>
+	@if (TempData["ErrorMessage"] != null)
+	{
+		<div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+	}
+	<div>
+		<div class="ct-form-container">
+			<form method="post" asp-action="EditUser" asp-controller="Home">
+				<input type="hidden" asp-for="Id" />
+				<div class="mb-3 position-relative">
+					<input type="text" id="name" placeholder="Измененное имя" class="ct-form-control w-100" asp-for="Name">
+					<span asp-validation-for="Name" class="position-static"></span>
+				</div>
+
+				<div class="row gx-0 mb-3 position-relative">
+					<input type="text" id="email" placeholder="Измененный E-mail" class="ct-form-control w-100" asp-for="Email">
+					<span asp-validation-for="Email" class="position-static"></span>
+				</div>
+				<button type="submit" class="btn ct-btn-create">Сохранить изменения</button>
+				<a asp-action="DisplayUsers" class="btn ct-btn-create mt-2 d-flex align-items-center justify-content-center">Отмена</a>
+			</form>
+		</div>
+	</div>
+</div>

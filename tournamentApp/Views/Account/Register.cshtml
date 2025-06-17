@@ -1,0 +1,45 @@
+﻿@{
+	Layout = null;
+}
+@using tournamentApp.Models.Entities
+@model RegisterViewModel
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link href="~/styles/account.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="register-container">
+        <h2>Регистрация</h2>
+        <form method="post" asp-action="Register">
+            <div class="input-container">
+                <input type="text" id="name" placeholder=" " asp-for="Name">
+                <label for="name" asp-for="Name">Имя</label>
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="input-container">
+                <input type="text" id="email" placeholder=" " asp-for="Email">
+                <label for="email" asp-for="Email">E-mail</label>
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" placeholder=" " asp-for="Password">
+                <label for="password" asp-for="Password">Пароль</label>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="input-container">
+                <input type="password" id="comppassword" placeholder=" " asp-for="RepeatPassword">
+                <label for="comppassword" asp-for="RepeatPassword">Подтвердите пароль</label>
+                <span asp-validation-for="RepeatPassword"></span>
+            </div>
+            <button type="submit" class="register-btn">
+                Зарегистрироваться
+            </button>
+			<p>Уже есть аккаунт?</p>
+			<a class="register" asp-area="" asp-controller="Account" asp-action="Login">Войти</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿@{
+	ViewData["Title"] = "Format";
+}
+@using tournamentApp.Models.Entities
+@model CreateTournamentViewModel
+
+<div class="ct-container">
+	<h2 class="ct-page-title">Создание турнира</h2>
+	<div>
+		<div class="ct-form-container">
+			<form method="post">
+				<div class="row gx-3 mb-3">
+					<div class="col-md-6">
+						<select class="ct-form-select w-100" asp-for="SelectGame">
+							<option selected disabled>Игра</option>
+							<option value="Dota 2">Dota 2</option>
+							<option value="CS:GO">CS:GO</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<select class="ct-form-select w-100" asp-for="SelectFormat">
+							<option selected disabled>Формат</option>
+							<option value="1 x 1">1 x 1</option>
+							<option value="3 x 3">3 x 3</option>
+							<option value="5 x 5">5 x 5</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<input type="text" id="nameTournamentOneForm" asp-for="NameTournament" class="ct-form-control w-100" placeholder="Наименование турнира">
+					<span asp-validation-for="NameTournament"></span>
+				</div>
+
+				<div class="row gx-0 mb-3">
+					<input type="datetime-local" name="dateEvent" class="ct-form-control" required asp-for="dateEvent">
+					<label for="dateEvent" asp-for="dateEvent">Дата турнира</label>
+				</div>
+
+				<button type="submit" class="btn ct-btn-create">Создать</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
